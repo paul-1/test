@@ -6,8 +6,9 @@ on:
 jobs:
   check_name:
     steps:
-      if: contains( ${{APPROVED_USERS}}, ${{github.actor}})
-      echo ok
-      if: !contains( ${{secrets.APPROVED_USERS}}, ${{github.actor}})
-      echo stop
+      -name: Check User
+       if: contains( ${{APPROVED_USERS}}, ${{github.actor}})
+       run: echo "ok"
+       if: !contains( ${{secrets.APPROVED_USERS}}, ${{github.actor}})
+       run: echo "stop"
         
