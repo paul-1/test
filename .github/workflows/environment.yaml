@@ -16,8 +16,8 @@ jobs:
      - name: Users
        run: echo "$USER_LIST"
      - name: UserOK
-       if: "contains( $USER_LIST, $ACTOR)"
+       if: ${{contains( $USER_LIST, $ACTOR)}}
        run: echo "ok"
      - name: BadUser
-       if: "!contains( $USER_LIST, $$ACTOR)"
+       if: ${{!contains( $USER_LIST, $$ACTOR)}}
        run: echo "stop"
