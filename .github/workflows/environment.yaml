@@ -4,11 +4,9 @@ on:
   pull_request_target:
   
 jobs:
-  check_name:
-    steps:
-      -name: Check User
-       if: contains( ${{APPROVED_USERS}}, ${{github.actor}})
-       run: echo "ok"
-       if: !contains( ${{secrets.APPROVED_USERS}}, ${{github.actor}})
-       run: echo "stop"
+   steps:
+      if: "contains( ${{secrets.APPROVED_USERS}}, ${{github.actor}})"
+      run: echo "ok"
+      if: "!contains( ${{secrets.APPROVED_USERS}}, ${{github.actor}})"
+      run: echo "stop"
         
