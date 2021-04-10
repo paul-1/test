@@ -11,11 +11,6 @@ jobs:
       USER_LIST: ${{secrets.APPROVED_USERS}}
       ACTOR: ${{github.actor}}
     steps:
-     - name: Actor
-       run: |
-            echo env.ACTOR
-            echo env.USER_LIST
-            
      - name: UserOK
        if: contains( env.USER_LIST, env.ACTOR)
        run: echo "ok"
