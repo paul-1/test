@@ -9,10 +9,15 @@ jobs:
     runs-on: ubuntu-latest
     env:
       USER_LIST: ${{secrets.APPROVED_USERS}}
+      ACTOR: ${{github.actor}}
     steps:
+     - name: Actor
+       run: echo "$ACTOR"
+     - name: Users
+       run: echo "$USER_LIST"
      - name: UserOK
-       if: "contains( $USER_LIST, ${{github.actor}})"
+       if: "contains( $USER_LIST, $ACTOR)"
        run: echo "ok"
      - name: BadUser
-       if: "!contains( $USER_LIST, ${{github.actor}})"
+       if: "!contains( $USER_LIST, $$ACTOR)"
        run: echo "stop"
