@@ -11,8 +11,8 @@ jobs:
       USER_LIST: ${{secrets.APPROVED_USERS}}
     steps:
      - name: UserOK
-       if: "contains( ${{USER_LIST}}, ${{github.actor}})"
+       if: "contains( $USER_LIST, ${{github.actor}})"
        run: echo "ok"
      - name: BadUser
-       if: "!contains( ${{USER_LIST}}, ${{github.actor}})"
+       if: "!contains( $USER_LIST, ${{github.actor}})"
        run: echo "stop"
