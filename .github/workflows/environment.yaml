@@ -17,8 +17,8 @@ jobs:
             echo "$USER_LIST"
             
      - name: UserOK
-       if: contains( $USER_LIST, $ACTOR)
+       if: contains( env.USER_LIST, env.ACTOR)
        run: echo "ok"
      - name: BadUser
-       if: false == contains( $USER_LIST, $ACTOR)
+       if: false == contains( env.USER_LIST, env.ACTOR)
        run: echo "stop"
