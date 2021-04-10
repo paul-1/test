@@ -1,0 +1,13 @@
+name: 'test environment'
+on:
+  push:
+  pull_request_target:
+  
+jobs:
+  check_name:
+    steps:
+      if: contains( ${{APPROVED_USERS}}, ${{github.actor}})
+      echo ok
+      if: !contains( ${{secrets.APPROVED_USERS}}, ${{github.actor}})
+      echo stop
+        
