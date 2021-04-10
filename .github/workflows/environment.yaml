@@ -12,12 +12,13 @@ jobs:
       ACTOR: ${{github.actor}}
     steps:
      - name: Actor
-       run: echo "$ACTOR"
-     - name: Users
-       run: echo "$USER_LIST"
+       run: |
+            echo "$ACTOR"
+            echo "$USER_LIST"
+            
      - name: UserOK
-       if: ${{contains( $USER_LIST, $ACTOR)}}
+       if: "contains( $USER_LIST, $ACTOR)"
        run: echo "ok"
      - name: BadUser
-       if: ${{!contains( $USER_LIST, $$ACTOR)}}
+       if: "!contains( $USER_LIST, $ACTOR)"
        run: echo "stop"
