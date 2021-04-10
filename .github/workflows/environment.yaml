@@ -4,7 +4,13 @@ on:
   pull_request_target:
   
 jobs:
-  if: "contains( ${{secrets.APPROVED_USERS}}, ${{github.actor}})"
-  run: echo "ok"
-  if: "!contains( ${{secrets.APPROVED_USERS}}, ${{github.actor}})"
-  run: echo "stop"
+  build:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+     - name: UserOK
+       if: "contains( ${{secrets.APPROVED_USERS}}, ${{github.actor}})"
+       run: echo "ok"
+     - name: BadUser
+       if: "!contains( ${{secrets.APPROVED_USERS}}, ${{github.actor}})"
+       run: echo "stop"
