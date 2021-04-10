@@ -13,8 +13,8 @@ jobs:
     steps:
      - name: Actor
        run: |
-            echo "$ACTOR"
-            echo "$USER_LIST"
+            echo "env.ACTOR"
+            echo "env.USER_LIST"
             
      - name: UserOK
        if: contains( env.USER_LIST, env.ACTOR)
